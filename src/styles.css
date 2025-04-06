@@ -13,20 +13,12 @@ body.light-mode {
 }
 
 body {
+  overflow-y: auto; 
   background-color: var(--bg-color);
   color: var(--text-color);
   font-family: 'Inter', sans-serif;
   height: 100%;
   transition: background-color 0.3s ease, color 0.3s ease;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-body::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-  background: transparent;
-  display: none;
 }
 
 .card,
@@ -49,7 +41,21 @@ body::-webkit-scrollbar {
 }
 
 html {
-  overflow-y: hidden;
-  scroll-behavior: smooth; 
+  scroll-behavior: smooth;
   height: 100%;
+}
+
+@media (min-width: 768px) {
+  body {
+    overflow-y: hidden;
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
+  }
+
+  body::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    background: transparent;
+    display: none;
+  }
 }
