@@ -1,0 +1,55 @@
+:root {
+  --bg-color: #121212;
+  --text-color: #e0e0e0;
+  --card-bg: #1e1e1e;
+  --overlay-bg: #1a1a1a;
+}
+
+body.light-mode {
+  --bg-color: #f0f0f0; 
+  --text-color: #1a1a1a;
+  --card-bg: #ffffff;
+  --overlay-bg: #f8f8f8; 
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Inter', sans-serif;
+  height: 100%;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  background: transparent;
+  display: none;
+}
+
+.card,
+.tools-left,
+.tools-right {
+  background-color: var(--card-bg);
+}
+
+.card h3,
+.card p,
+.tool-list li,
+.tools-right {
+  color: var(--text-color);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  overflow-y: hidden;
+  scroll-behavior: smooth; 
+  height: 100%;
+}

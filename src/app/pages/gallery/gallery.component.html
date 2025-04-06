@@ -1,0 +1,60 @@
+<section class="gallery">
+    <h1>Meine Werke</h1>
+  
+    <div class="grid">
+      <div *ngFor="let project of filteredProjects" class="card">
+  
+        <ngb-carousel *ngIf="project.images.length > 0"
+                      [interval]="3000"
+                      [pauseOnHover]="true"
+                      (click)="openGallery(project)">
+          <ng-template ngbSlide *ngFor="let img of project.images">
+            <img [src]="img" loading="lazy"
+                 [alt]="project.title"
+                 class="carousel-img" />
+          </ng-template>
+        </ngb-carousel>
+  
+        <h3>{{ project.title }}</h3>
+        <hr class="card-divider" />
+        <p>{{ project.description }}</p>
+  
+      </div>
+    </div>
+  
+    <ng-template #imageModal let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title">{{ selectedProject?.title }}</h4>
+        <button type="button"
+                class="btn-close"
+                aria-label="Close"
+                (click)="modal.dismiss()"></button>
+      </div>
+      <div class="modal-body gallery-modal">
+        <img *ngFor="let img of selectedProject?.images"
+             [src]="img"
+             loading="lazy"
+             [alt]="selectedProject?.title"
+             class="modal-img"
+             (click)="openImageFullscreen(img, selectedProject!.images)"
+ />
+      </div>
+    </ng-template>
+
+
+    <ng-template [ngIf]="selectedImage">
+      <div class="image-overlay">
+        <button class="btn-close fullscreen-close" (click)="closeFullscreen()"></button>
+        <button class="nav-arrow left" (click)="prevImage()">‹</button>
+        <button class="nav-arrow right" (click)="nextImage()">›</button>
+        <img [src]="selectedImage"
+             class="fullscreen-img"
+             (click)="closeFullscreen()" />
+      </div>
+    </ng-template>
+    
+      
+  </section>
+<footer class="signature">
+  Portfolio © 2025 Lobnig Valerie
+</footer>
